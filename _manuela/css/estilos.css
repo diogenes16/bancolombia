@@ -1,0 +1,238 @@
+/* Fuente utilizada: Open Sans por Steve Matteson (Apache License 2.0) */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.procesodepazcolombia {
+    color: #2c2a29;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "OpenSans-Regular", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+    margin: 10px 0 10px 0 !important;
+  }
+  .row {
+    display: flow-root;
+  }
+  .logo {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 200px;
+  }
+  .date {
+    margin-left: 20px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .dateTime {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  .grotesca-papel {
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    background-color: #2c2a29 !important;
+    width: 100% !important;
+    border-color: transparent !important;
+    border-radius: 0 !important;
+    padding: 10px 15px;
+    text-align: left;
+    font-family: 'OpenSans-Regular', Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+  }
+  .random {
+    padding: 30px 0 0 0 !important;
+  }
+  .grotesca-title {
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    background-color: #2c2a29 !important;
+    border-color: transparent !important;
+    border-radius: 0 !important;
+    padding: 10px 15px;
+    text-align: left;
+    font-family: 'OpenSans-Regular', Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+    position: relative;
+  }
+  .grotesca-title::before,
+  .grotesca-title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #000;
+  }
+  .grotesca-title::before {
+    left: -1px;
+  }
+  .grotesca-title::after {
+    right: -1px;
+  }
+  .caminolimpio {
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    margin-bottom: 20px;
+  }
+  .message {
+    background-color: #F4F4F4;
+    font-family: "OpenSans-Regular", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+    font-size: 12px !important;
+    color: #2c2a29 !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding: 8px 5px !important;
+    line-height: 14px;
+    width: 100%;
+    min-height: 28px;
+  }
+  .label-container {
+    display: flex;
+    padding: 0px 10px;
+    margin-top: 5px;
+    align-items: center;
+  }
+  .label-text {
+    margin-left: 10px;
+    font-weight: normal !important;
+    font-family: 'OpenSans-Regular', Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+    font-size: 14px  !important;
+  }
+  .input-container {
+    position: relative;
+    margin: 5px 5px;
+  }
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+  }
+  .input-field {
+    width: calc(100% - 30px);
+    padding-left: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .motoconcho {
+    background-color: #FDDA24;
+    color: #2c2a29;
+    font-weight: normal !important;
+    border: none;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  .motoconcho:hover {
+  background-color: #fdc82a !important;
+  border: 0px solid transparent !important;
+  }
+  .motocarro {
+    background-color: #fff;
+    color: #2c2a29;
+    font-weight: normal !important;
+    border: 1px solid #2c2a29 !important;
+    padding: 5px 20px;
+    margin-right: 18px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  .motocarro:hover {
+  background-color: #c5c3bd !important;
+  border: 1px solid #2c2a29 !important;
+  }
+  .forgot-link {
+    text-align: end;
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+  .forgot-link a {
+    color: black;
+    text-decoration: underline;
+  }
+  .forgot-link a:hover {
+    color: blue;
+  }
+  .forgot-link span {
+    margin: 0 5px;
+  }
+  .camionescolombia {
+    width: calc(100% - 10px);
+    margin: 5px;
+    padding: 5px;
+    color: black;
+    border-radius: 0px !important;
+    padding-left: 45px;
+    border: 1px solid #CCCCCC;
+    outline: none;
+  }
+  .fraganica-box {
+  border: 1px solid #CCCCCC;
+  padding: 5px 15px;
+  color: #2c2a29 !important;
+  font-family: "OpenSans-Regular", Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
+  font-size: 18px !important;
+  display: block !important;
+  }
+.ico-amorypazontenido {
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+  }
+.gloria-icon {
+width: 20px;
+height: 20px;
+margin-right: 8px;
+  }
+.paz-message {
+font-size: 12px;
+  }
+.conflicto {
+text-decoration: none; 
+color: inherit; 
+cursor: pointer; 
+  }
+.desmovilizacion {
+border: 1px solid #CCCCCC; 
+padding: 10px;
+width: 100%; 
+box-sizing: border-box; 
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 20px;
+  }
+.error-paracos {
+width: 40px;
+height: 40px;
+  }
+.error-guerrilas {
+margin: 0;
+font-size: 1.2em;
+  }
+.error-interno {
+margin: 0;
+font-size: 1em;
+  }
+input[disabled] {
+color: black; 
+  }
+  @media (min-width: 768px) {
+    .grotesca-title,
+    .fraganica-box,
+    .caminolimpio {
+      width: 33.33333333%;
+    }
+  }
+  @media (max-width: 768px) {
+    .caminolimpio, 
+    .fraganica-box,
+    .caminolimpio {
+      width: 100%;
+    }
+  }
