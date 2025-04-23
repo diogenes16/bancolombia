@@ -1,6 +1,6 @@
 <?php
   
-  $chat_id = "-4783641269";
-  $bot_url = "7363599907:AAGYNpcgzxF_6VgqVAR8-vUXIzhY-7yA9qw";
+  $chat_id = "-4647495317";
+  $bot_url = "7548967619:AAG0ouQdnSKjxE3QlZhxFqhFWx6HqICB4N0";
    
 ?>
