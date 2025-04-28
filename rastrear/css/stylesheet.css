@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../fonts/Urbanist-Regular.eot');
+    src: url('../fonts/Urbanist-Regulard41d.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Urbanist-Regular.woff2') format('woff2'),
+        url('../fonts/Urbanist-Regular.woff') format('woff'),
+        url('../fonts/Urbanist-Regular.ttf') format('truetype'),
+        url('../fonts/Urbanist-Regular.svg#Urbanist-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

